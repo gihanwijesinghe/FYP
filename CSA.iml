@@ -92,7 +92,7 @@
         <jarDirectory url="file://$USER_HOME$/Downloads/apache-commons.jar" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="hibernateLibs" level="project" />
+    <orderEntry type="library" exported="" name="hibernateLibs" level="project" />
     <orderEntry type="library" exported="" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="module-library">
       <library>
@@ -121,8 +121,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Hibernate 5.2.3-5.2.3" level="project" />
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="library" exported="" name="Hibernate 5.2.3-5.2.3" level="project" />
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="jar://$USER_HOME$/Desktop/yamlbeans-1.06.jar/yamlbeans-1.06.jar!/" />
@@ -140,7 +140,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../../../yamlbeans-1.06.jar!/" />
@@ -153,6 +153,33 @@
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../../../com.mysql.jdbc_5.1.5.jar/com.mysql.jdbc_5.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../../yamlbeans-1.06.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../../com.mysql.jdbc_5.1.5.jar/com.mysql.jdbc_5.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../hibernate-3.6.0.jar/hibernate-3.6.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

@@ -5,14 +5,10 @@
  */
 package com.csa.util;
 
-import com.csa.entity.BowlByBall;
+import com.csa.entity.*;
 
-import com.csa.entity.Innings;
 import java.io.File;
-import com.csa.entity.MatchDetails;
-import com.csa.entity.Result;
-import com.csa.entity.Team;
-import com.csa.entity.Wicket;
+
 import com.esotericsoftware.yamlbeans.YamlException;
 import com.esotericsoftware.yamlbeans.YamlReader;
 import java.io.FileNotFoundException;
@@ -324,6 +320,9 @@ public class MatchUtil {
 				bowl.setExtras(extras);
 				bowl.setTotalRuns(total);
 				// runs and totoal runs ????
+				Player bats = new Player();
+				bats.setPlayerName((String) delivery.get("batsman"));
+				bowl.setBats(bats);
 
 				if (delivery.containsKey("wicket")) {
 

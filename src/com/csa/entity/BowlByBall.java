@@ -34,8 +34,11 @@ public class BowlByBall {
 	public int totalRuns;
 	public int isWicket;
 	
-	@OneToOne 
-	public Wicket wicket;
+	@OneToOne
+    public Wicket wicket;
+
+    @OneToOne
+    private Player bats;
 	
 	public BowlByBall() {
 		// TODO Auto-generated constructor stub
@@ -255,5 +258,13 @@ public class BowlByBall {
 
     public void setBoundary(int boundary) {
         this.boundary = boundary;
+    }
+
+    public Player getBats() {
+        return bats;
+    }
+
+    public void setBats(Player bats) {
+        this.bats = bats;
     }
 }

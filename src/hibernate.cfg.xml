@@ -10,7 +10,7 @@
 		<property name="hibernate.show_sql">true</property>
 <!-- 		<property name="hibernate.current_session_context_class">thread</property> -->
 		<property name="hbm2ddl.auto">create</property>
-		<property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+		<property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
 <!-- 		<mapping class="com.csa.entity.Bowl_by_bowl_details"/> -->
 		<!--	<mapping class="com.csa.entity.Bowl"/>
             <mapping class="com.csa.entity.Innings"/>
@@ -23,6 +23,7 @@
             <!--<mapping class="com.csa.visualization.PPResults"/>-->
             <!--<mapping class="com.csa.visualization.DeathResults"/>-->
             <!--<mapping class="com.csa.visualization.MiddleResults"/>-->
+		<mapping class="com.csa.entity.Player"/>
 		<mapping class="com.csa.entity.Wicket"/>
 		<mapping class="com.csa.entity.BowlByBall"/>
 

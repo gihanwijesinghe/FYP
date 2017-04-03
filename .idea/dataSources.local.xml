@@ -7,5 +7,11 @@
       <schema-pattern>csa.*</schema-pattern>
       <default-schemas>csa.*</default-schemas>
     </data-source>
+    <data-source name="MySQL - fyp@localhost" uuid="2f38cff7-21ef-4f05-bae2-97f0b6536f13">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>fyp.*</schema-pattern>
+      <default-schemas>fyp.*</default-schemas>
+    </data-source>
   </component>
 </project>

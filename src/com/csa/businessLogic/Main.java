@@ -6,16 +6,11 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.csa.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.csa.entity.BowlByBall;
-import com.csa.entity.Innings;
-import com.csa.entity.MatchDetails;
-import com.csa.entity.Result;
-import com.csa.entity.Team;
-import com.csa.entity.Wicket;
 import com.csa.util.InningsUtil;
 import com.csa.util.MatchUtil;
 import com.csa.util.PlayerUtil;
@@ -259,6 +254,7 @@ public class Main {
 
 		BowlByBall bowl;
 		Wicket wicket;
+		Player bats;
 
 		Map<Integer, BowlByBall> InningsDeliveries = innings1
 				.getDeliveries();
@@ -274,6 +270,10 @@ public class Main {
 				if (bowl.isWicket == 1) {
 					session.save(wicket);
 				}
+
+				bats = bowl.getBats();
+				session.save(bats);
+
 			}
 		}
 	}
