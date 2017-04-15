@@ -3,7 +3,9 @@ package com.csa.businessLogic;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.csa.entity.*;
@@ -18,6 +20,7 @@ import com.csa.visualization.BatsmansInning;
 import com.csa.visualization.InningByInningsResults;
 import com.esotericsoftware.yamlbeans.YamlException;
 import com.sun.jndi.url.corbaname.corbanameURLContextFactory;
+import org.hibernate.query.Query;
 
 public class Main {
 
@@ -25,27 +28,14 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		// Result result = new Result();
-		// Team team1 = new Team();
-		// Team team2 = new Team();
-
-		// Innings innings2 = new Innings();
-
-		// innings1.setBattingTeam(team1);
-		// innings1.setFieldingTeam(team2);
-
-		// Wicket wicket = new Wicket();
-		// bowl.setWicket(wicket);
-		// match.setResult(result);
-		// match.setFirstInnings(innings1);
-		// match.setSecondInnings(innings2);
-
 		SessionFactory sessionFactory = new Configuration().configure()
 				.buildSessionFactory();
 		Session session = sessionFactory.openSession();
 
+		List<String> playerNames = new ArrayList<String>();
+		String [] teamNames;
 		//for (int j = 335982; j <= 829823; j++) {
-			for (int j = 335982; j < 335983; j++) {
+		for (int j = 335982; j < 335983; j++) {
 			String filepath = "resources/ipl/" + j + ".yaml";
 
 			File file = null;
@@ -105,33 +95,9 @@ public class Main {
 			count++;
 			MatchDetails match;
 
-
 			Innings innings1;
-			Innings innings1_pp;
-			Innings innings1_middle;
-			Innings innings1_death;
 			Innings innings2;
-			Innings innings2_pp;
-			Innings innings2_middle;
-			Innings innings2_death;
 
-			// need to change, unnecessary
-			Team battingTeam1;
-			Team fieldingTeam1;
-
-			Team battingTeam2;
-			Team fieldingTeam2;
-
-			BowlByBall bowl;
-			Wicket wicket;
-
-			Result result;
-
-			//visualization
-			HashMap<Integer, BatsmansInning> allBattingInnings;
-
-			InningByInningsResults inningResults;
-			BatsmansInning battingInnings;
 			session.beginTransaction();
 
 			try {
@@ -139,100 +105,13 @@ public class Main {
 
 				match.setMatchId(count);
 				innings1 = match.getFirstInnings();
-				innings1_pp = innings1.getInnings_pp();
-				innings1_middle = innings1.getInnings_middle();
-				innings1_death = innings1.getInnings_death();
-
 				innings2 = match.getSecondInnings();
-				innings2_pp = innings2.getInnings_pp();
-				innings2_middle = innings2.getInnings_middle();
-				innings2_death = innings2.getInnings_death();
 
-				battingTeam1 = innings1.getBattingTeam();
-				fieldingTeam1 = innings1.getFieldingTeam();
+				deliveryAnalysis(session, playerNames, innings1);
+				deliveryAnalysis(session, playerNames, innings2);
 
-				battingTeam2 = innings2.getBattingTeam();
-				fieldingTeam2 = innings2.getFieldingTeam();
-
-				/*session.save(match);
-
-				session.save(innings1);
-				session.save(innings1_pp);
-				session.save(innings1_middle);
-				session.save(innings1_death);
-				session.save(innings2);
-				session.save(innings2_pp);
-				session.save(innings2_middle);
-				session.save(innings2_death);
-
-				session.save(battingTeam1);
-				session.save(fieldingTeam1);
-
-				session.save(battingTeam2);
-				session.save(fieldingTeam2);*/
-
-				deliveryAnalysis(session, innings1);
-				for(int is=0; is<5; is++){
-					System.out.println("hellooooooooooooooooooooooooooooooooooooooooo");
-				}
-//				deliveryAnalysis(session, innings1_pp);
-//				deliveryAnalysis(session, innings1_middle);
-//				deliveryAnalysis(session, innings1_death);
-//				deliveryAnalysis(session, innings2);
-//				deliveryAnalysis(session, innings2_pp);
-//				deliveryAnalysis(session, innings2_middle);
-//				deliveryAnalysis(session, innings2_death);
-
-				result = match.getResult();
-				//session.save(result);
-
-				// visualization
-			/*	allBattingInnings = PlayerUtil
-						.getScoreCardDetailsFirstInnings(match);
-
-				for (int i = 1; i <= allBattingInnings.size(); i++) {
-					// for (int i = 1; i < 2; i++) {
-					battingInnings = allBattingInnings.get(i);
-					session.save(battingInnings);
-				}
-
-				// visualization
-				allBattingInnings = PlayerUtil
-						.getScoreCardDetailsSecondInnings(match);
-
-				for (int i = 1; i <= allBattingInnings.size(); i++) {
-					// for (int i = 1; i < 2; i++) {
-					battingInnings = allBattingInnings.get(i);
-					session.save(battingInnings);
-				}*/
-				//innings Results visualization
-
-//				inningResults = InningsUtil.generateInningsByInningsResults(match.getMatchId(),match.getResult().getWonByFirstBatOrSecondBat(),innings1);
-//				session.save(inningResults);
-//
-//				inningResults = InningsUtil.generateInningsByInningsResults(match.getMatchId(),match.getResult().getWonByFirstBatOrSecondBat(),innings1_pp);
-//				session.save(inningResults);
-//
-//				inningResults = InningsUtil.generateInningsByInningsResults(match.getMatchId(),match.getResult().getWonByFirstBatOrSecondBat(),innings1_middle);
-//				session.save(inningResults);
-//
-//				inningResults = InningsUtil.generateInningsByInningsResults(match.getMatchId(),match.getResult().getWonByFirstBatOrSecondBat(),innings1_death);
-//				session.save(inningResults);
-//
-//				inningResults = InningsUtil.generateInningsByInningsResults(match.getMatchId(),match.getResult().getWonByFirstBatOrSecondBat(),innings2);
-//				session.save(inningResults);
-//
-//				inningResults = InningsUtil.generateInningsByInningsResults(match.getMatchId(),match.getResult().getWonByFirstBatOrSecondBat(),innings2_pp);
-//				session.save(inningResults);
-//
-//				inningResults = InningsUtil.generateInningsByInningsResults(match.getMatchId(),match.getResult().getWonByFirstBatOrSecondBat(),innings2_middle);
-//				session.save(inningResults);
-//
-//				inningResults = InningsUtil.generateInningsByInningsResults(match.getMatchId(),match.getResult().getWonByFirstBatOrSecondBat(),innings2_death);
-//				session.save( inningResults);
 
 				session.getTransaction().commit();
-
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -250,31 +129,99 @@ public class Main {
 		sessionFactory.close();
 	}
 
-	private static void deliveryAnalysis(Session session, Innings innings1) {
+	private static void deliveryAnalysis(Session session, List playerNames, Innings innings1) {
 
 		BowlByBall bowl;
-		Wicket wicket;
+		Ball ball;
 		Player bats;
+		Player baller;
 
 		Map<Integer, BowlByBall> InningsDeliveries = innings1
 				.getDeliveries();
 
 		for (int i = 1; i <= InningsDeliveries.size(); i++) {
+			//for (int i = 1; i <3; i++) {
 
 			if(InningsDeliveries.get(i)!=null) {
 				bowl = InningsDeliveries.get(i);
-				System.out.println(bowl.bowlnumber);
-				session.save(bowl);
+				ball = convertToBall(bowl);
+				System.out.println(ball.getBallNo() + "bowlnumber");
+				bats = ball.getBatsman();
+				baller = ball.getBowler();
+				System.out.println(playerNames);
 
-				wicket = bowl.getWicket();
-				if (bowl.isWicket == 1) {
-					session.save(wicket);
+//                checkForPlayerNew(session, playerNames, bats.getPlayerName());
+//                checkForPlayerNew(session, playerNames, baller.getPlayerName());
+				if(checkForPlayer(playerNames, bats.getPlayerName()) == true){
+					Query query =  session.createQuery("from Player where playername = :name ");
+					query.setParameter("name", bats.getPlayerName());
+					List<Player> list = query.list();
+					if(!list.isEmpty())
+						System.out.println("abc " + list.get(0).getPlayerId());
+					bats.setPlayerId(list.get(0).getPlayerId());
+				}
+				else{
+					playerNames.add(bats.getPlayerName());
+					session.save(bats);
+				}
+				if(checkForPlayer(playerNames, baller.getPlayerName()) == true){
+					Query query =  session.createQuery("from Player where playername = :name ");
+					query.setParameter("name", baller.getPlayerName());
+					List<Player> list = query.list();
+					if(!list.isEmpty())
+						System.out.println("abc " + list.get(0).getPlayerId());
+					baller.setPlayerId(list.get(0).getPlayerId());
+				}
+				else{
+					playerNames.add(baller.getPlayerName());
+					session.save(baller);
 				}
 
-				bats = bowl.getBats();
-				session.save(bats);
+				session.saveOrUpdate(ball);
 
 			}
+
 		}
+	}
+
+	public static boolean checkForPlayer(List playerNames, String name){
+		if(playerNames.contains(name)){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+//    public static void checkForPlayerNew(Session session, List playerNames, String name){
+//        Player player = new Player();
+//        if(playerNames.contains(name)){
+//            Query query =  session.createQuery("from Player where playername = :name ");
+//            query.setParameter("name", name);
+//            List<Player> list = query.list();
+//            if(!list.isEmpty())
+//                System.out.println("abc " + list.get(0).getPlayerId());
+//            player.setPlayerId(list.get(0).getPlayerId());
+//            player.setPlayerName(name);
+//        }
+//        else {
+//            playerNames.add(name);
+//            session.save(player);
+//        }
+//    }
+
+	public static Ball convertToBall(BowlByBall bowlByBall){
+
+		System.out.println(bowlByBall.getBats().getPlayerName());
+		Ball ball = new Ball();
+		ball.setBowler(bowlByBall.getBaller());
+		ball.setBallNo(bowlByBall.getBallNumber());
+		ball.setBatsman(bowlByBall.getBats());
+		ball.setRuns(bowlByBall.getRuns());
+		ball.setBoundary(bowlByBall.getBoundary());
+		ball.setMatchId(bowlByBall.getMatchId());
+		ball.setWicketType(bowlByBall.getWicketType());
+
+		return ball;
 	}
 }
