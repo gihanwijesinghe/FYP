@@ -24,9 +24,9 @@
             <!--<mapping class="com.csa.visualization.DeathResults"/>-->
             <!--<mapping class="com.csa.visualization.MiddleResults"/>-->
 		<mapping class="com.csa.entity.Player"/>
-		<!--<mapping class="com.csa.entity.Wicket"/>-->
+		<mapping class="com.csa.entity.Team"/>
+		<mapping class="com.csa.entity.Matchs"/>
 		<mapping class="com.csa.entity.Ball"/>
-		<!--<mapping class="com.csa.entity.BowlByBall"/>-->
 
 
         </session-factory>

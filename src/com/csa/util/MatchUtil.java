@@ -65,6 +65,10 @@ public class MatchUtil {
 		match.setUmprie1(umpires.get(0));
 		match.setUmprie2(umpires.get(1));
 
+		ArrayList<String> manOfMatchList = (ArrayList<String>) info.get("player_of_match");
+		String manOfMatch = manOfMatchList.get(0);
+		match.setManOfMatch(manOfMatch);
+
 		Map toss = (Map) info.get("toss");
 		System.out.println((String) toss.get("winner"));
 		match.setTossWinningTeam((String) toss.get("winner"));
@@ -88,9 +92,16 @@ public class MatchUtil {
 		if(winner == null){
 			winner = "error";
 		}
+		match.setWinner(winner);
 		// System.out.println("winner"+outcome.get("winner"));
 
 		Map by = (Map) outcome.get("by");
+		String margin;
+		if(by.get("runs") != null){margin = (String) by.get("runs");}
+		else if(by.get("wickets") != null){margin = (String) by.get("runs");}
+		else {margin = "draw";}
+		match.setMargin(margin);
+
 		String by_which = "aa";
 		int by_amount = 1;
 		if(by != null) {

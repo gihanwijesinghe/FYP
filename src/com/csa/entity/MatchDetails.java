@@ -32,6 +32,9 @@ public class MatchDetails {
 
 	String city;
 	String venue;
+	private String manOfMatch;
+	private String margin;
+	private String winner;
 
 	@OneToOne
 	Innings firstInnings;
@@ -215,4 +218,27 @@ public class MatchDetails {
 		this.result = result;
 	}
 
+	public String getManOfMatch() {
+		return manOfMatch;
+	}
+
+	public void setManOfMatch(String manOfMatch) {
+		this.manOfMatch = manOfMatch;
+	}
+
+	public String getMargin() {
+		return margin;
+	}
+
+	public void setMargin(String margin) {
+		this.margin = margin;
+	}
+
+	public String getWinner() {
+		return winner;
+	}
+
+	public void setWinner(String winner) {
+		this.winner = winner;
+	}
 }

@@ -16,8 +16,8 @@ public class Team {
 	public String captain;
 	public String wicketKeper;
 	
-	@ElementCollection
-	public Map<Integer,String> Playing11;  
+//	@ElementCollection
+//	public Map<Integer,String> Playing11;
 	
 	public Team() {
 		// TODO Auto-generated constructor stub
@@ -82,15 +82,15 @@ public class Team {
     /**
      * @return the Playing11
      */
-    public Map<Integer,String> getPlaying11() {
-        return Playing11;
-    }
-
-    /**
-     * @param Playing11 the Playing11 to set
-     */
-    public void setPlaying11(Map<Integer,String> Playing11) {
-        this.Playing11 = Playing11;
-    }
+//    public Map<Integer,String> getPlaying11() {
+//        return Playing11;
+//    }
+//
+//    /**
+//     * @param Playing11 the Playing11 to set
+//     */
+//    public void setPlaying11(Map<Integer,String> Playing11) {
+//        this.Playing11 = Playing11;
+//    }
 
 }

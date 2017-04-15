@@ -33,9 +33,10 @@ public class Main {
 		Session session = sessionFactory.openSession();
 
 		List<String> playerNames = new ArrayList<String>();
-		String [] teamNames;
+		List<String> teamNames = new ArrayList<String>();
+
 		//for (int j = 335982; j <= 829823; j++) {
-		for (int j = 335982; j < 335983; j++) {
+		for (int j = 335982; j < 335993; j++) {
 			String filepath = "resources/ipl/" + j + ".yaml";
 
 			File file = null;
@@ -94,6 +95,7 @@ public class Main {
 			}
 			count++;
 			MatchDetails match;
+			Matchs newMatch;
 
 			Innings innings1;
 			Innings innings2;
@@ -107,8 +109,12 @@ public class Main {
 				innings1 = match.getFirstInnings();
 				innings2 = match.getSecondInnings();
 
-				deliveryAnalysis(session, playerNames, innings1);
-				deliveryAnalysis(session, playerNames, innings2);
+				//saveMatchDetails();
+				//newMatch= convertToMatch(match);
+				teamNames = insertTeam(session, match, teamNames);
+				newMatch = convertToMatch(session, match);
+				playerNames = deliveryAnalysis(session, playerNames, innings1);
+				//playerNames = deliveryAnalysis(session, playerNames, innings2);
 
 
 				session.getTransaction().commit();
@@ -150,8 +156,8 @@ public class Main {
 				baller = ball.getBowler();
 				System.out.println(playerNames);
 
-//                checkForPlayerNew(session, playerNames, bats.getPlayerName());
-//                checkForPlayerNew(session, playerNames, baller.getPlayerName());
+//                playerNames = checkForPlayerNew(session, playerNames, bats.getPlayerName());
+//                playerNames = checkForPlayerNew(session, playerNames, baller.getPlayerName());
 				if(checkForPlayer(playerNames, bats.getPlayerName()) == true){
 					Query query =  session.createQuery("from Player where playername = :name ");
 					query.setParameter("name", bats.getPlayerName());
@@ -165,12 +171,12 @@ public class Main {
 					session.save(bats);
 				}
 				if(checkForPlayer(playerNames, baller.getPlayerName()) == true){
-					Query query =  session.createQuery("from Player where playername = :name ");
-					query.setParameter("name", baller.getPlayerName());
-					List<Player> list = query.list();
-					if(!list.isEmpty())
-						System.out.println("abc " + list.get(0).getPlayerId());
-					baller.setPlayerId(list.get(0).getPlayerId());
+					Query query2 =  session.createQuery("from Player where playername = :name ");
+					query2.setParameter("name", baller.getPlayerName());
+					List<Player> list2 = query2.list();
+					if(!list2.isEmpty())
+						System.out.println("abc " + list2.get(0).getPlayerId());
+					baller.setPlayerId(list2.get(0).getPlayerId());
 				}
 				else{
 					playerNames.add(baller.getPlayerName());
@@ -178,9 +184,7 @@ public class Main {
 				}
 
 				session.saveOrUpdate(ball);
-
 			}
-
 		}
 		return playerNames;
 	}
@@ -194,26 +198,29 @@ public class Main {
 		}
 	}
 
-//    public static void checkForPlayerNew(Session session, List playerNames, String name){
+//    public static List checkForPlayerNew(Session session, List playerNames, String name){
 //        Player player = new Player();
 //        if(playerNames.contains(name)){
-//            Query query =  session.createQuery("from Player where playername = :name ");
-//            query.setParameter("name", name);
-//            List<Player> list = query.list();
+//					Query query =  session.createQuery("from Player where playername = :name ");
+//					query.setParameter("name", "P Kumar");
+//					List<Player> list = query.list();
+//			System.out.println("wanted name" + name);
+//			//List<Player> list = query.list();
 //            if(!list.isEmpty())
 //                System.out.println("abc " + list.get(0).getPlayerId());
 //            player.setPlayerId(list.get(0).getPlayerId());
 //            player.setPlayerName(name);
 //        }
 //        else {
-//            playerNames.add(name);
+//			System.out.println("not in the list" + name);
+//			playerNames.add(name);
 //            session.save(player);
 //        }
+//		return playerNames;
 //    }
 
 	public static Ball convertToBall(BowlByBall bowlByBall){
 
-		System.out.println(bowlByBall.getBats().getPlayerName());
 		Ball ball = new Ball();
 		ball.setBowler(bowlByBall.getBaller());
 		ball.setBallNo(bowlByBall.getBallNumber());
@@ -224,5 +231,58 @@ public class Main {
 		ball.setWicketType(bowlByBall.getWicketType());
 
 		return ball;
+	}
+
+	public static Matchs convertToMatch(Session session, MatchDetails matchDetails){
+		Matchs match = new Matchs();
+
+		Query query =  session.createQuery("from Team where teamname = :name ");
+		query.setParameter("name", matchDetails.getFirstInnings().getBattingTeam().getTeamName());
+		List<Team> list = query.list();
+		Team team1 = list.get(0);
+
+		Query query2 =  session.createQuery("from Team where teamname = :name ");
+		query2.setParameter("name", matchDetails.getSecondInnings().getBattingTeam().getTeamName());
+		List<Team> list2 = query2.list();
+		Team team2 = list2.get(0);
+
+		match.setBattingFirst(team1);
+		match.setBattingSecond(team2);
+		//match.setManOfMatch(matchDetails.getManOfMatch());
+		match.setMatchDate(matchDetails.getMatchDate());
+		match.setUmpireOne(matchDetails.getUmprie1());
+		//System.out.println("my data" + match.getUmpireOne());
+		match.setUmpireTwo(matchDetails.getUmprie2());
+		match.setVenue(matchDetails.getVenue());
+		match.setOutcome(matchDetails.getMargin());
+
+		if(team1.getTeamName().equals(matchDetails.getTossWinningTeam())){
+			match.setTossWin(team1);
+		}
+		else {match.setTossWin(team2);}
+
+		if(team1.getTeamName().equals(matchDetails.getWinner())){
+			match.setWinner(team1);
+		}
+		else {match.setWinner(team2);}
+
+		session.saveOrUpdate(match);
+		System.out.println("this is the continue" + matchDetails.getFirstInnings().getBattingTeam().getTeamName());
+		return match;
+	}
+
+	public static List<String> insertTeam(Session session, MatchDetails matchDetails, List teamNames){
+		if(teamNames.contains(matchDetails.getFirstInnings().getBattingTeam().getTeamName())){}
+		else {
+			teamNames.add(matchDetails.getFirstInnings().getBattingTeam().getTeamName());
+			session.saveOrUpdate(matchDetails.getFirstInnings().getBattingTeam());
+		}
+
+		if(teamNames.contains(matchDetails.getSecondInnings().getBattingTeam().getTeamName())){}
+		else {
+			teamNames.add(matchDetails.getSecondInnings().getBattingTeam().getTeamName());
+			session.saveOrUpdate(matchDetails.getSecondInnings().getBattingTeam());
+		}
+		return teamNames;
 	}
 }
