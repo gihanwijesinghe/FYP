@@ -129,7 +129,7 @@ public class Main {
 		sessionFactory.close();
 	}
 
-	private static void deliveryAnalysis(Session session, List playerNames, Innings innings1) {
+	private static List deliveryAnalysis(Session session, List playerNames, Innings innings1) {
 
 		BowlByBall bowl;
 		Ball ball;
@@ -182,6 +182,7 @@ public class Main {
 			}
 
 		}
+		return playerNames;
 	}
 
 	public static boolean checkForPlayer(List playerNames, String name){

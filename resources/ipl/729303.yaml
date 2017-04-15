@@ -1,12 +1,13 @@
 ---
 meta:
-  data_version: 0.6
+  data_version: 0.7
   created: 2014-05-01
   revision: 1
 info:
   competition: IPL
   dates:
     - 2014-04-25
+  gender: male
   match_type: T20
   neutral_venue: 1
   outcome:

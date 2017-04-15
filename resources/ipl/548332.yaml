@@ -1,6 +1,6 @@
 ---
 meta:
-  data_version: 0.6
+  data_version: 0.7
   created: 2014-03-03
   revision: 3
 info:
@@ -8,6 +8,7 @@ info:
   competition: IPL
   dates:
     - 2012-04-21
+  gender: male
   match_type: T20
   outcome:
     by:
