@@ -321,8 +321,12 @@ public class MatchUtil {
 				bowl.setTotalRuns(total);
 				// runs and totoal runs ????
 				Player bats = new Player();
+				Player baller = new Player();
 				bats.setPlayerName((String) delivery.get("batsman"));
+				baller.setPlayerName((String) delivery.get("bowler"));
 				bowl.setBats(bats);
+				bowl.setBaller(baller);
+				bowl.setBallNumber(String.valueOf(deli_num));
 
 				if (delivery.containsKey("wicket")) {
 
@@ -343,7 +347,7 @@ public class MatchUtil {
 					wicket.setWicketType(kind);
 
 					bowl.setIsWicket(1); // boolean or int;
-					bowl.setWicket(wicket);
+					//bowl.setWicket(wicket);
 				}
 				System.out.println("segment: " + segment);
 

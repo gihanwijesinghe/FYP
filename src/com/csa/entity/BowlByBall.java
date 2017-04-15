@@ -9,12 +9,10 @@ import javax.persistence.OneToOne;
 @Entity
 public class BowlByBall {
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	//@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	public int bowlId;
 
     private int matchId;
-    private int batsmanId;
-    private int ballerId;
     public int runs;
     private String ballNo;
     private String wicketType;
@@ -33,12 +31,15 @@ public class BowlByBall {
 	
 	public int totalRuns;
 	public int isWicket;
-	
-	@OneToOne
-    public Wicket wicket;
+    private String ballNumber;
+	//@OneToOne
+    //public Wicket wicket;
 
-    @OneToOne
+    //@OneToOne
     private Player bats;
+
+    //@OneToOne
+    private Player baller;
 	
 	public BowlByBall() {
 		// TODO Auto-generated constructor stub
@@ -201,16 +202,16 @@ public class BowlByBall {
     /**
      * @return the wicket
      */
-    public Wicket getWicket() {
-        return wicket;
-    }
+//    public Wicket getWicket() {
+//        return wicket;
+//    }
 
     /**
-     * @param wicket the wicket to set
+//     * @param wicket the wicket to set
      */
-    public void setWicket(Wicket wicket) {
-        this.wicket = wicket;
-    }
+//    public void setWicket(Wicket wicket) {
+//        this.wicket = wicket;
+//    }
 
     public int getMatchId() {
         return matchId;
@@ -218,22 +219,6 @@ public class BowlByBall {
 
     public void setMatchId(int matchId) {
         this.matchId = matchId;
-    }
-
-    public int getBatsmanId() {
-        return batsmanId;
-    }
-
-    public void setBatsmanId(int batsmanId) {
-        this.batsmanId = batsmanId;
-    }
-
-    public int getBallerId() {
-        return ballerId;
-    }
-
-    public void setBallerId(int ballerId) {
-        this.ballerId = ballerId;
     }
 
     public String getBallNo() {
@@ -266,5 +251,21 @@ public class BowlByBall {
 
     public void setBats(Player bats) {
         this.bats = bats;
+    }
+
+    public Player getBaller() {
+        return baller;
+    }
+
+    public void setBaller(Player baller) {
+        this.baller = baller;
+    }
+
+    public String getBallNumber() {
+        return ballNumber;
+    }
+
+    public void setBallNumber(String ballNumber) {
+        this.ballNumber = ballNumber;
     }
 }
