@@ -15,10 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author sankha
@@ -43,11 +40,19 @@ public class MatchUtil {
 	public static MatchDetails getMatchInfoFromFile(File filePath)
 			throws FileNotFoundException, YamlException, ParseException {
 		MatchDetails match = new MatchDetails();
+		Object object = new Object();
 		int count=0;
 
-		YamlReader reader = new YamlReader(new FileReader(filePath));
+//		try {
+			YamlReader reader = new YamlReader(new FileReader(filePath));
 
-		Object object = reader.read();
+			 object = reader.read();
+//		}catch(Exception e){
+//			System.out.println("error");
+//			MatchDetails error = new MatchDetails();
+//			error.setCity("error");
+//			return error;
+//		}
 		// System.out.println(object);
 		Map map = (Map) object;
 		System.out.println(map.size());

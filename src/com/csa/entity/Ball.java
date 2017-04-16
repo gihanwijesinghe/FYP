@@ -19,7 +19,6 @@ public class Ball {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int bowlId;
 
-    private int matchId;
     private int runs;
     private String ballNo;
     private String wicketType;
@@ -34,6 +33,9 @@ public class Ball {
     @OneToOne
     private Player bowler;
 
+    @OneToOne
+    private Matchs match;
+
     public Ball() {
         // TODO Auto-generated constructor stub
     }
@@ -44,14 +46,6 @@ public class Ball {
 
     public void setBowlId(int bowlId) {
         this.bowlId = bowlId;
-    }
-
-    public int getMatchId() {
-        return matchId;
-    }
-
-    public void setMatchId(int matchId) {
-        this.matchId = matchId;
     }
 
     public int getRuns() {
@@ -116,5 +110,13 @@ public class Ball {
 
     public void setBowler(Player bowler) {
         this.bowler = bowler;
+    }
+
+    public Matchs getMatch() {
+        return match;
+    }
+
+    public void setMatch(Matchs match) {
+        this.match = match;
     }
 }
