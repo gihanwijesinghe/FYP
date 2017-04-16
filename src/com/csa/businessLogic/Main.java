@@ -2,6 +2,7 @@ package com.csa.businessLogic;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.csa.entity.*;
+import com.esotericsoftware.yamlbeans.YamlReader;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -35,64 +37,78 @@ public class Main {
 		List<String> playerNames = new ArrayList<String>();
 		List<String> teamNames = new ArrayList<String>();
 
-		//for (int j = 335982; j <= 829823; j++) {
-		for (int j = 335982; j < 335993; j++) {
+		for (int j = 335982; j <= 981019; j++) {
+		//for (int j = 335982; j < 335988; j++) {
+		//for (int j = 336028; j < 336032; j++) {
 			String filepath = "resources/ipl/" + j + ".yaml";
 
-			File file = null;
-			try {
-				switch (j) {
+			//Object object = new Object();
+			try{
+				YamlReader reader = new YamlReader(new FileReader(filepath));
+				reader.read();
 
-					case 336041: {
-						j = 392181;
-						continue;
-					}
-					case 392240: {
-						j = 419106;
-						continue;
-					}
-					case 419166: {
-						j = 501198;
-						continue;
-					}
-					case 501272: {
-						j = 548306;
-						continue;
-					}
-					case 548382: {
-						j = 597998;
-						continue;
-					}
-					case 598074: {
-						j = 729279;
-						continue;
-					}
-					case 734050: {
-						j = 829705;
-						continue;
-					}
-					case 336030: {
-						j = j++;
-						continue;
-					}
-					case 392187: {
-						j = j++;
-						continue;
-					}
-					case 392193: {
-						j = j++;
-						continue;
-					}
-					case 501217: {
-						j = j++;
-						continue;
-					}
-					default:
-						file = new File(filepath);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+				System.out.println("okay");
+			}catch (Exception e){
+				System.out.println("nooo");
+				continue;
+				//list.add(i);
 			}
+
+			File file = null;
+			file = new File(filepath);
+//			try {
+////				switch (j) {
+////
+////					case 336041: {
+////						j = 392181;
+////						continue;
+////					}
+////					case 392240: {
+////						j = 419106;
+////						continue;
+////					}
+////					case 419166: {
+////						j = 501198;
+////						continue;
+////					}
+////					case 501272: {
+////						j = 548306;
+////						continue;
+////					}
+////					case 548382: {
+////						j = 597998;
+////						continue;
+////					}
+////					case 598074: {
+////						j = 729279;
+////						continue;
+////					}
+////					case 734050: {
+////						j = 829705;
+////						continue;
+////					}
+//////					case 336030: {
+//////						j = j++;
+//////						continue;
+//////					}
+////					case 392187: {
+////						j = j++;
+////						continue;
+////					}
+////					case 392193: {
+////						j = j++;
+////						continue;
+////					}
+////					case 501217: {
+////						j = j++;
+////						continue;
+////					}
+////					default:
+////						file = new File(filepath);
+////				}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
 			count++;
 			MatchDetails match;
 			Matchs newMatch;
@@ -105,16 +121,14 @@ public class Main {
 			try {
 				match = MatchUtil.getMatchInfoFromFile(file);
 
-				match.setMatchId(count);
+				//match.setMatchId(count);
 				innings1 = match.getFirstInnings();
 				innings2 = match.getSecondInnings();
 
-				//saveMatchDetails();
-				//newMatch= convertToMatch(match);
 				teamNames = insertTeam(session, match, teamNames);
 				newMatch = convertToMatch(session, match);
-				playerNames = deliveryAnalysis(session, playerNames, innings1);
-				//playerNames = deliveryAnalysis(session, playerNames, innings2);
+				playerNames = deliveryAnalysis(session, playerNames, innings1, newMatch);
+				playerNames = deliveryAnalysis(session, playerNames, innings2, newMatch);
 
 
 				session.getTransaction().commit();
@@ -135,7 +149,7 @@ public class Main {
 		sessionFactory.close();
 	}
 
-	private static List deliveryAnalysis(Session session, List playerNames, Innings innings1) {
+	private static List deliveryAnalysis(Session session, List playerNames, Innings innings1, Matchs match) {
 
 		BowlByBall bowl;
 		Ball ball;
@@ -150,6 +164,7 @@ public class Main {
 
 			if(InningsDeliveries.get(i)!=null) {
 				bowl = InningsDeliveries.get(i);
+				System.out.println("boudaryyyyyyyy" + bowl.getBoundary());
 				ball = convertToBall(bowl);
 				System.out.println(ball.getBallNo() + "bowlnumber");
 				bats = ball.getBatsman();
@@ -182,6 +197,8 @@ public class Main {
 					playerNames.add(baller.getPlayerName());
 					session.save(baller);
 				}
+
+				ball.setMatch(match);
 
 				session.saveOrUpdate(ball);
 			}
@@ -227,7 +244,6 @@ public class Main {
 		ball.setBatsman(bowlByBall.getBats());
 		ball.setRuns(bowlByBall.getRuns());
 		ball.setBoundary(bowlByBall.getBoundary());
-		ball.setMatchId(bowlByBall.getMatchId());
 		ball.setWicketType(bowlByBall.getWicketType());
 
 		return ball;
@@ -251,7 +267,6 @@ public class Main {
 		//match.setManOfMatch(matchDetails.getManOfMatch());
 		match.setMatchDate(matchDetails.getMatchDate());
 		match.setUmpireOne(matchDetails.getUmprie1());
-		//System.out.println("my data" + match.getUmpireOne());
 		match.setUmpireTwo(matchDetails.getUmprie2());
 		match.setVenue(matchDetails.getVenue());
 		match.setOutcome(matchDetails.getMargin());
@@ -267,7 +282,6 @@ public class Main {
 		else {match.setWinner(team2);}
 
 		session.saveOrUpdate(match);
-		System.out.println("this is the continue" + matchDetails.getFirstInnings().getBattingTeam().getTeamName());
 		return match;
 	}
 
