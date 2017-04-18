@@ -13,8 +13,8 @@ public class Team {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	public int teamId;
 	public String teamName;
-	public String captain;
-	public String wicketKeper;
+//	public String captain;
+//	public String wicketKeper;
 	
 //	@ElementCollection
 //	public Map<Integer,String> Playing11;
@@ -54,30 +54,30 @@ public class Team {
     /**
      * @return the captain
      */
-    public String getCaptain() {
-        return captain;
-    }
-
-    /**
-     * @param captain the captain to set
-     */
-    public void setCaptain(String captain) {
-        this.captain = captain;
-    }
-
-    /**
-     * @return the wicketKeper
-     */
-    public String getWicketKeper() {
-        return wicketKeper;
-    }
-
-    /**
-     * @param wicketKeper the wicketKeper to set
-     */
-    public void setWicketKeper(String wicketKeper) {
-        this.wicketKeper = wicketKeper;
-    }
+//    public String getCaptain() {
+//        return captain;
+//    }
+//
+//    /**
+//     * @param captain the captain to set
+//     */
+//    public void setCaptain(String captain) {
+//        this.captain = captain;
+//    }
+//
+//    /**
+//     * @return the wicketKeper
+//     */
+//    public String getWicketKeper() {
+//        return wicketKeper;
+//    }
+//
+//    /**
+//     * @param wicketKeper the wicketKeper to set
+//     */
+//    public void setWicketKeper(String wicketKeper) {
+//        this.wicketKeper = wicketKeper;
+//    }
 
     /**
      * @return the Playing11

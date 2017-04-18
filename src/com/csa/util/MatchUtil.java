@@ -43,17 +43,10 @@ public class MatchUtil {
 		Object object = new Object();
 		int count=0;
 
-//		try {
 			YamlReader reader = new YamlReader(new FileReader(filePath));
 
 			 object = reader.read();
-//		}catch(Exception e){
-//			System.out.println("error");
-//			MatchDetails error = new MatchDetails();
-//			error.setCity("error");
-//			return error;
-//		}
-		// System.out.println(object);
+
 		Map map = (Map) object;
 		System.out.println(map.size());
 
@@ -71,7 +64,13 @@ public class MatchUtil {
 		match.setUmprie2(umpires.get(1));
 
 		ArrayList<String> manOfMatchList = (ArrayList<String>) info.get("player_of_match");
-		String manOfMatch = manOfMatchList.get(0);
+		String manOfMatch = null;
+		if(manOfMatchList != null) {
+			 manOfMatch = manOfMatchList.get(0);
+		}
+		else{
+			manOfMatch = "noplayer";
+		}
 		match.setManOfMatch(manOfMatch);
 
 		Map toss = (Map) info.get("toss");
@@ -101,11 +100,22 @@ public class MatchUtil {
 		// System.out.println("winner"+outcome.get("winner"));
 
 		Map by = (Map) outcome.get("by");
-		String margin;
-		if(by.get("runs") != null){margin = (String) by.get("runs");}
-		else if(by.get("wickets") != null){margin = (String) by.get("runs");}
-		else {margin = "draw";}
-		match.setMargin(margin);
+		String tied = (String) outcome.get("result");
+		String margin = null;
+		if(by != null) {
+			if (by.get("runs") != null) {
+				margin = (String) by.get("runs") + "runs";
+			} else if (by.get("wickets") != null) {
+				margin = (String) by.get("wickets") + "wickets";
+			} else {
+				margin = "draw";
+			}
+		}
+		else if(tied != null){
+			margin = "tied";
+		}
+			match.setMargin(margin);
+
 
 		String by_which = "aa";
 		int by_amount = 1;

@@ -38,8 +38,8 @@ public class Main {
 		List<String> teamNames = new ArrayList<String>();
 
 		//for (int j = 598046; j <= 981019; j++) {
-		for (int j = 335982; j <= 981019; j++) {
-		//for (int j = 335982; j < 335988; j++) {
+		//for (int j = 335982; j <= 981019; j++) {
+		for (int j = 335982; j < 336020; j++) {
 		//for (int j = 336028; j < 336032; j++) {
 			String filepath = "resources/ipl/" + j + ".yaml";
 
