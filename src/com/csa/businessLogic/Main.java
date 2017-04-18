@@ -37,6 +37,7 @@ public class Main {
 		List<String> playerNames = new ArrayList<String>();
 		List<String> teamNames = new ArrayList<String>();
 
+		//for (int j = 598046; j <= 981019; j++) {
 		for (int j = 335982; j <= 981019; j++) {
 		//for (int j = 335982; j < 335988; j++) {
 		//for (int j = 336028; j < 336032; j++) {
@@ -46,14 +47,10 @@ public class Main {
 			try{
 				YamlReader reader = new YamlReader(new FileReader(filepath));
 				reader.read();
-
-				System.out.println("okay");
 			}catch (Exception e){
-				System.out.println("nooo");
 				continue;
-				//list.add(i);
 			}
-
+			System.out.println("file number : " + j);
 			File file = null;
 			file = new File(filepath);
 //			try {
@@ -121,7 +118,7 @@ public class Main {
 			try {
 				match = MatchUtil.getMatchInfoFromFile(file);
 
-				//match.setMatchId(count);
+				match.setMatchId(count);
 				innings1 = match.getFirstInnings();
 				innings2 = match.getSecondInnings();
 
@@ -299,4 +296,8 @@ public class Main {
 		}
 		return teamNames;
 	}
+
+//	public static List<Player> addPlayer(Session session, List playerNames, String name){
+//
+//	}
 }
