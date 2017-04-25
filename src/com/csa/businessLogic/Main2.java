@@ -44,20 +44,6 @@ public class Main2 {
             query1.setParameter("name", matchId);
             List<Matchs> list1 = query1.list();
 
-            String outcome = list1.get(0).getOutcome();
-            String[] splitStr = outcome.split("\\s+");
-            if(splitStr.length == 2){
-                if(splitStr[1].equals("runs")){
-                    inn1.setResult("won");
-                    inn2.setResult("lose");
-                }
-                else{
-                    inn2.setResult("won");
-                    inn1.setResult("lose");
-                }
-            }
-            else{inn1.setResult("draw");inn2.setResult("draw");}
-
             Query query = session.createQuery("from Ball bb where bb.match.matchId = :name ");
             query.setParameter("name", matchId);
             List<Ball> list = query.list();
@@ -90,6 +76,20 @@ public class Main2 {
             inn2.setTotalWickets(inn2TotalWickets);
             inn2.setRunsPowerPlay(powerPlay(list.subList(i, break2))[0]);
             inn2.setWicketsPowerPlay(powerPlay(list.subList(i, break2))[1]);
+
+            String outcome = list1.get(0).getOutcome();
+            String[] splitStr = outcome.split("\\s+");
+            if(splitStr.length == 2){
+                if(splitStr[1].equals("runs")){
+                    inn1.setResult("won");
+                    inn2.setResult("lose");
+                }
+                else{
+                    inn2.setResult("won");
+                    inn1.setResult("lose");
+                }
+            }
+            else{inn1.setResult("draw");inn2.setResult("draw");}
 
             session.saveOrUpdate(inn1);
             session.saveOrUpdate(inn2);
