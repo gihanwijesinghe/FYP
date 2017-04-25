@@ -2,16 +2,20 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="MySQL - CSA@localhost" uuid="30219fdd-327f-47c3-8a87-493d06ca97ba">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <schema-pattern>csa.*</schema-pattern>
-      <default-schemas>csa.*</default-schemas>
+      <resolve-scope>csa:*</resolve-scope>
     </data-source>
     <data-source name="MySQL - fyp@localhost" uuid="2f38cff7-21ef-4f05-bae2-97f0b6536f13">
+      <database-info product="MySQL" version="5.7.16-log" jdbc-version="3.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.5 ( Revision: ${svn.Revision} )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <schema-pattern>fyp.*</schema-pattern>
-      <default-schemas>fyp.*</default-schemas>
+      <resolve-scope>fyp:*</resolve-scope>
     </data-source>
   </component>
 </project>
