@@ -22,9 +22,15 @@ public class Dataset {
     private String result;
     private int runsPowerPlay;
     private int wicketsPowerPlay;
+    private int numOfDots;
+    private int numOfFours;
+    private int numOfSixes;
+    private int dotsInPP;
+    private int foursInPP;
+    private int sixesInPP;
 
     public Dataset() {
-        // TODO Auto-generated constructor stub
+
     }
 
 
@@ -82,6 +88,54 @@ public class Dataset {
 
     public void setWicketsPowerPlay(int wicketsPowerPlay) {
         this.wicketsPowerPlay = wicketsPowerPlay;
+    }
+
+    public int getNumOfDots() {
+        return numOfDots;
+    }
+
+    public void setNumOfDots(int numOfDots) {
+        this.numOfDots = numOfDots;
+    }
+
+    public int getNumOfFours() {
+        return numOfFours;
+    }
+
+    public void setNumOfFours(int numOfFours) {
+        this.numOfFours = numOfFours;
+    }
+
+    public int getNumOfSixes() {
+        return numOfSixes;
+    }
+
+    public void setNumOfSixes(int numOfSixes) {
+        this.numOfSixes = numOfSixes;
+    }
+
+    public int getDotsInPP() {
+        return dotsInPP;
+    }
+
+    public void setDotsInPP(int dotsInPP) {
+        this.dotsInPP = dotsInPP;
+    }
+
+    public int getFoursInPP() {
+        return foursInPP;
+    }
+
+    public void setFoursInPP(int foursInPP) {
+        this.foursInPP = foursInPP;
+    }
+
+    public int getSixesInPP() {
+        return sixesInPP;
+    }
+
+    public void setSixesInPP(int sixesInPP) {
+        this.sixesInPP = sixesInPP;
     }
 }
 
