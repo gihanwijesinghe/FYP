@@ -39,7 +39,7 @@ public class Main {
 
 		//for (int j = 598046; j <= 981019; j++) {
 		//for (int j = 335982; j <= 981019; j++) {
-		for (int j = 335982; j < 336020; j++) {
+		for (int j = 335982; j < 336000; j++) {
 		//for (int j = 336028; j < 336032; j++) {
 			String filepath = "resources/ipl/" + j + ".yaml";
 
@@ -53,59 +53,6 @@ public class Main {
 			System.out.println("file number : " + j);
 			File file = null;
 			file = new File(filepath);
-//			try {
-////				switch (j) {
-////
-////					case 336041: {
-////						j = 392181;
-////						continue;
-////					}
-////					case 392240: {
-////						j = 419106;
-////						continue;
-////					}
-////					case 419166: {
-////						j = 501198;
-////						continue;
-////					}
-////					case 501272: {
-////						j = 548306;
-////						continue;
-////					}
-////					case 548382: {
-////						j = 597998;
-////						continue;
-////					}
-////					case 598074: {
-////						j = 729279;
-////						continue;
-////					}
-////					case 734050: {
-////						j = 829705;
-////						continue;
-////					}
-//////					case 336030: {
-//////						j = j++;
-//////						continue;
-//////					}
-////					case 392187: {
-////						j = j++;
-////						continue;
-////					}
-////					case 392193: {
-////						j = j++;
-////						continue;
-////					}
-////					case 501217: {
-////						j = j++;
-////						continue;
-////					}
-////					default:
-////						file = new File(filepath);
-////				}
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
 			count++;
 			MatchDetails match;
 			Matchs newMatch;
@@ -212,26 +159,6 @@ public class Main {
 		}
 	}
 
-//    public static List checkForPlayerNew(Session session, List playerNames, String name){
-//        Player player = new Player();
-//        if(playerNames.contains(name)){
-//					Query query =  session.createQuery("from Player where playername = :name ");
-//					query.setParameter("name", "P Kumar");
-//					List<Player> list = query.list();
-//			System.out.println("wanted name" + name);
-//			//List<Player> list = query.list();
-//            if(!list.isEmpty())
-//                System.out.println("abc " + list.get(0).getPlayerId());
-//            player.setPlayerId(list.get(0).getPlayerId());
-//            player.setPlayerName(name);
-//        }
-//        else {
-//			System.out.println("not in the list" + name);
-//			playerNames.add(name);
-//            session.save(player);
-//        }
-//		return playerNames;
-//    }
 
 	public static Ball convertToBall(BowlByBall bowlByBall){
 
@@ -239,7 +166,7 @@ public class Main {
 		ball.setBowler(bowlByBall.getBaller());
 		ball.setBallNo(bowlByBall.getBallNumber());
 		ball.setBatsman(bowlByBall.getBats());
-		ball.setRuns(bowlByBall.getRuns());
+		ball.setRuns(bowlByBall.getTotalRuns());
 		ball.setBoundary(bowlByBall.getBoundary());
 		ball.setWicketType(bowlByBall.getWicketType());
 

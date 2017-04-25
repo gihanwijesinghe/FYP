@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 public class Player {
 
-    @Id @GeneratedValue(strategy=GenerationType.AUTO)
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int playerId;
 
     @Column(unique = true)
