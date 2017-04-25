@@ -145,9 +145,23 @@ public class Main2 {
         inn2.setFoursInPP(powerPlay(list.subList(0, break2))[3]);
         inn2.setSixesInPP(powerPlay(list.subList(0, break2))[4]);
 
-        session.saveOrUpdate(inn1);
-        session.saveOrUpdate(inn2);
-    }
+            String outcome = list1.get(0).getOutcome();
+            String[] splitStr = outcome.split("\\s+");
+            if(splitStr.length == 2){
+                if(splitStr[1].equals("runs")){
+                    inn1.setResult("won");
+                    inn2.setResult("lose");
+                }
+                else{
+                    inn2.setResult("won");
+                    inn1.setResult("lose");
+                }
+            }
+            else{inn1.setResult("draw");inn2.setResult("draw");}
+
+            session.saveOrUpdate(inn1);
+            session.saveOrUpdate(inn2);
+        }
 
     public static double getRunRate(int runs, String ballNo) {
         double ball = Double.parseDouble(ballNo);
