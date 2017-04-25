@@ -18,7 +18,7 @@ public class Main3 {
         Connection conn = DBConnection.getDBConnection();
 
         String alterColumnOrderQuery1 = "ALTER TABLE DATASET ADD DUMMY TINYINT(1)";
-        String alterColumnOrderQuery2 = "ALTER TABLE DATASET MODIFY RESULT VARCHAR(225) AFTER DUMMY";
+        String alterColumnOrderQuery2 = "ALTER TABLE DATASET MODIFY result INT AFTER DUMMY";
         String alterColumnOrderQuery3 = "ALTER TABLE DATASET DROP DUMMY";
 
         // create the java statement
@@ -45,7 +45,7 @@ public class Main3 {
         java.sql.ResultSet myResultSet = rs;
          //your resultset logic here
 
-        writer.writeAll(myResultSet,includeHeaders);
+        writer.writeAll(myResultSet, includeHeaders);
 
         writer.close();
     }

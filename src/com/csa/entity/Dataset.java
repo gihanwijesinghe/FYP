@@ -19,7 +19,7 @@ public class Dataset {
     private int totalRuns;
     private double runRate;
     private int totalWickets;
-    private String result;
+    private double result;
     private int runsPowerPlay;
     private int wicketsPowerPlay;
     private int numOfDots;
@@ -66,11 +66,11 @@ public class Dataset {
         this.totalWickets = totalWickets;
     }
 
-    public String getResult() {
+    public double getResult() {
         return result;
     }
 
-    public void setResult(String result) {
+    public void setResult(double result) {
         this.result = result;
     }
 
