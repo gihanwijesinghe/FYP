@@ -14,6 +14,9 @@ import java.util.List;
  */
 
 public class Main2 {
+    final static double WON = 1;
+    final static double LOSE = 0;
+    final static double DRAW = 0.5;
 
     public static void main(String[] args) {
 
@@ -81,15 +84,15 @@ public class Main2 {
             String[] splitStr = outcome.split("\\s+");
             if(splitStr.length == 2){
                 if(splitStr[1].equals("runs")){
-                    inn1.setResult("won");
-                    inn2.setResult("lose");
+                    inn1.setResult(WON);
+                    inn2.setResult(LOSE);
                 }
                 else{
-                    inn2.setResult("won");
-                    inn1.setResult("lose");
+                    inn2.setResult(WON);
+                    inn1.setResult(LOSE);
                 }
             }
-            else{inn1.setResult("draw");inn2.setResult("draw");}
+            else{inn1.setResult(DRAW);inn2.setResult(DRAW);}
 
             session.saveOrUpdate(inn1);
             session.saveOrUpdate(inn2);
