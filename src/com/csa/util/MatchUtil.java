@@ -104,11 +104,11 @@ public class MatchUtil {
 		String margin = null;
 		if(by != null) {
 			if (by.get("runs") != null) {
-				margin = (String) by.get("runs") + "runs";
+				margin = (String) by.get("runs") + " runs";
 			} else if (by.get("wickets") != null) {
-				margin = (String) by.get("wickets") + "wickets";
+				margin = (String) by.get("wickets") + " wickets";
 			} else {
-				margin = "draw";
+				margin = " draw";
 			}
 		}
 		else if(tied != null){
@@ -319,6 +319,8 @@ public class MatchUtil {
 				Map run_map = (Map) delivery.get("runs");
 				int extras = Integer.parseInt((String) run_map.get("extras"));
 
+				Map extra = (Map) delivery.get("extras");
+
 				Map extras_map = (Map) delivery.get("extras");
 
 				if(extras_map!=null) {
@@ -363,6 +365,9 @@ public class MatchUtil {
 							.get("fielders");
 
 					String kind = (String) wicket_map.get("kind");
+					if(kind != null){
+						bowl.setWicketType(kind);
+					}
 
 					inni1_wicketNumber++;
 					Wicket wicket = new Wicket();

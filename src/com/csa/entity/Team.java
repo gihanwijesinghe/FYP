@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Entity
 public class Team {
 	
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int teamId;
 	public String teamName;
 //	public String captain;

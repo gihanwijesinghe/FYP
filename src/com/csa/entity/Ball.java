@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
 public class Ball {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bowlId;
 
     private int runs;

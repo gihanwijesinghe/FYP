@@ -17,7 +17,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Matchs {
 
-    @Id @GeneratedValue(strategy=GenerationType.AUTO)
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int matchId;
 
     private Date matchDate;
