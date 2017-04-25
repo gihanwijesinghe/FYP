@@ -20,12 +20,12 @@ import java.util.Map;
 public class Main {
 
     static int count = 0;
-    static int numOfDots;
+   /* static int numOfDots;
     static int numOfFours;
     static int numOfSixes;
     static int dotsInPP;
     static int foursInPP;
-    static int sixesInPP;
+    static int sixesInPP;*/
 
 	public static void main(String[] args) {
 
@@ -38,7 +38,7 @@ public class Main {
 
         //for (int j = 335982; j <= 981019; j++) {
         //for (int j = 335982; j < 336020; j++) {
-        for (int j = 336028; j < 336032; j++) {
+        for (int j = 336028; j < 336077; j++) {
             String filepath = "resources/ipl/" + j + ".yaml";
 
 			//Object object = new Object();
@@ -97,12 +97,12 @@ public class Main {
         Ball ball;
         Player bats;
         Player baller;
-        numOfDots = 0;
+        /*numOfDots = 0;
         numOfFours = 0;
         numOfSixes = 0;
         dotsInPP = 0;
         foursInPP = 0;
-        sixesInPP = 0;
+        sixesInPP = 0;*/
 
 		Map<Integer, BowlByBall> InningsDeliveries = innings1
 				.getDeliveries();
@@ -116,7 +116,7 @@ public class Main {
                 ball = convertToBall(bowl);
                 int runs = ball.getRuns();
 
-                if (runs == 0) {
+                /*if (runs == 0) {
                     if (Integer.getInteger(ball.getBallNo().split("\\.")[0]) < 6) {
                         dotsInPP++;
                     }
@@ -131,7 +131,7 @@ public class Main {
                         sixesInPP++;
                     }
                     numOfSixes++;
-                }
+                }*/
 
                 System.out.println(ball.getBallNo() + "bowlnumber");
                 bats = ball.getBatsman();

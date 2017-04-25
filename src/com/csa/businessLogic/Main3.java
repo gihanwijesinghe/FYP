@@ -34,7 +34,6 @@ public class Main3 {
         // execute the query, and get a java resultset
         ResultSet rs = st.executeQuery(query);
 
-
         CSVWriter writer = null;
         try {
             writer = new CSVWriter(new FileWriter("yourfile.csv"), ',');

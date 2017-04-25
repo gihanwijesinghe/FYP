@@ -9,7 +9,7 @@
 		<property name="hibernate.connection.password">Mathematics</property>
 		<property name="hibernate.show_sql">true</property>
 <!-- 		<property name="hibernate.current_session_context_class">thread</property> -->
-		<property name="hbm2ddl.auto">create</property>
+		<property name="hbm2ddl.auto">update</property>
 		<property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
 <!-- 		<mapping class="com.csa.entity.Bowl_by_bowl_details"/> -->
 		<!--	<mapping class="com.csa.entity.Bowl"/>
@@ -24,12 +24,12 @@
             <!--<mapping class="com.csa.visualization.DeathResults"/>-->
             <!--<mapping class="com.csa.visualization.MiddleResults"/>-->
 
-		<!--
+
 		<mapping class="com.csa.entity.Player"/>
 		<mapping class="com.csa.entity.Team"/>
 		<mapping class="com.csa.entity.Matchs"/>
 		<mapping class="com.csa.entity.Ball"/>
-		-->
+		<mapping class="com.csa.entity.Dataset"/>
 
         </session-factory>
     </hibernate-configuration>

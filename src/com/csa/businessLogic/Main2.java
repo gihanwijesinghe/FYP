@@ -24,10 +24,10 @@ public class Main2 {
         session.beginTransaction();
 
         long count = (long) session.createQuery("select count(*) from  Matchs").getSingleResult();
-
+        System.out.println("Count: " + count);
         for (int i = 1; i < count + 1; i++) {
             insertDataSet(session, i);
-
+            System.out.println(i);
         }
 
         session.getTransaction().commit();
@@ -44,21 +44,6 @@ public class Main2 {
         Query query1 = session.createQuery("from Matchs where matchId = :name ");
         query1.setParameter("name", matchId);
         List<Matchs> list1 = query1.list();
-
-        String outcome = list1.get(0).getOutcome();
-        String[] splitStr = outcome.split("\\s+");
-        if (splitStr.length == 2) {
-            if (splitStr[1].equals("runs")) {
-                inn1.setResult("won");
-                inn2.setResult("lose");
-            } else {
-                inn2.setResult("won");
-                inn1.setResult("lose");
-            }
-        } else {
-            inn1.setResult("draw");
-            inn2.setResult("draw");
-        }
 
         Query query = session.createQuery("from Ball bb where bb.match.matchId = :name ");
         query.setParameter("name", matchId);
@@ -157,7 +142,8 @@ public class Main2 {
                     inn1.setResult("lose");
                 }
             }
-            else{inn1.setResult("draw");inn2.setResult("draw");}
+            else{inn1.setResult("draw");
+            inn2.setResult("draw");}
 
             session.saveOrUpdate(inn1);
             session.saveOrUpdate(inn2);
