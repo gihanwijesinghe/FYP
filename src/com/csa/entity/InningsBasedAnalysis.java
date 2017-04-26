@@ -1,45 +1,28 @@
 package com.csa.entity;
 
 /**
- * Created by Gihan on 4/20/2017.
+ * Created by Pranavan on 24-04-2017.
  */
+public class InningsBasedAnalysis {
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class Dataset {
-
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int dataId;
-
-    private int totalRuns;
     private double runRate;
+    private int totalRuns;
     private int totalWickets;
-    private double result;
-    private int runsPowerPlay;
-    private int wicketsPowerPlay;
     private int numOfDots;
     private int numOfFours;
     private int numOfSixes;
+    private int runsInPP;
+    private int wicketsInPP;
     private int dotsInPP;
     private int foursInPP;
     private int sixesInPP;
 
-    public Dataset() {
-
+    public double getRunRate() {
+        return runRate;
     }
 
-
-    public int getDataId() {
-        return dataId;
-    }
-
-    public void setDataId(int dataId) {
-        this.dataId = dataId;
+    public void setRunRate(double runRate) {
+        this.runRate = runRate;
     }
 
     public int getTotalRuns() {
@@ -50,44 +33,12 @@ public class Dataset {
         this.totalRuns = totalRuns;
     }
 
-    public double getRunRate() {
-        return runRate;
-    }
-
-    public void setRunRate(double runRate) {
-        this.runRate = runRate;
-    }
-
     public int getTotalWickets() {
         return totalWickets;
     }
 
     public void setTotalWickets(int totalWickets) {
         this.totalWickets = totalWickets;
-    }
-
-    public double getResult() {
-        return result;
-    }
-
-    public void setResult(double result) {
-        this.result = result;
-    }
-
-    public int getRunsPowerPlay() {
-        return runsPowerPlay;
-    }
-
-    public void setRunsPowerPlay(int runsPowerPlay) {
-        this.runsPowerPlay = runsPowerPlay;
-    }
-
-    public int getWicketsPowerPlay() {
-        return wicketsPowerPlay;
-    }
-
-    public void setWicketsPowerPlay(int wicketsPowerPlay) {
-        this.wicketsPowerPlay = wicketsPowerPlay;
     }
 
     public int getNumOfDots() {
@@ -114,6 +65,22 @@ public class Dataset {
         this.numOfSixes = numOfSixes;
     }
 
+    public int getRunsInPP() {
+        return runsInPP;
+    }
+
+    public void setRunsInPP(int runsInPP) {
+        this.runsInPP = runsInPP;
+    }
+
+    public int getWicketsInPP() {
+        return wicketsInPP;
+    }
+
+    public void setWicketsInPP(int wicketsInPP) {
+        this.wicketsInPP = wicketsInPP;
+    }
+
     public int getDotsInPP() {
         return dotsInPP;
     }
@@ -138,4 +105,3 @@ public class Dataset {
         this.sixesInPP = sixesInPP;
     }
 }
-

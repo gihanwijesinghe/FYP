@@ -1,32 +1,31 @@
 package com.csa.businessLogic;
 
+import com.csa.entity.*;
+import com.csa.util.MatchUtil;
+import com.esotericsoftware.yamlbeans.YamlException;
+import com.esotericsoftware.yamlbeans.YamlReader;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.csa.entity.*;
-import com.esotericsoftware.yamlbeans.YamlReader;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
-import com.csa.util.InningsUtil;
-import com.csa.util.MatchUtil;
-import com.csa.util.PlayerUtil;
-import com.csa.visualization.BatsmansInning;
-import com.csa.visualization.InningByInningsResults;
-import com.esotericsoftware.yamlbeans.YamlException;
-import com.sun.jndi.url.corbaname.corbanameURLContextFactory;
-import org.hibernate.query.Query;
-
 public class Main {
 
-	static int count=0;
+    static int count = 0;
+   /* static int numOfDots;
+    static int numOfFours;
+    static int numOfSixes;
+    static int dotsInPP;
+    static int foursInPP;
+    static int sixesInPP;*/
 
 	public static void main(String[] args) {
 
@@ -37,11 +36,10 @@ public class Main {
 		List<String> playerNames = new ArrayList<String>();
 		List<String> teamNames = new ArrayList<String>();
 
-		//for (int j = 598046; j <= 981019; j++) {
-		//for (int j = 335982; j <= 981019; j++) {
-		for (int j = 335982; j < 336000; j++) {
-		//for (int j = 336028; j < 336032; j++) {
-			String filepath = "resources/ipl/" + j + ".yaml";
+        //for (int j = 335982; j <= 981019; j++) {
+        //for (int j = 335982; j < 336020; j++) {
+        for (int j = 336028; j < 336077; j++) {
+            String filepath = "resources/ipl/" + j + ".yaml";
 
 			//Object object = new Object();
 			try{
@@ -95,10 +93,16 @@ public class Main {
 
 	private static List deliveryAnalysis(Session session, List playerNames, Innings innings1, Matchs match) {
 
-		BowlByBall bowl;
-		Ball ball;
-		Player bats;
-		Player baller;
+        BowlByBall bowl;
+        Ball ball;
+        Player bats;
+        Player baller;
+        /*numOfDots = 0;
+        numOfFours = 0;
+        numOfSixes = 0;
+        dotsInPP = 0;
+        foursInPP = 0;
+        sixesInPP = 0;*/
 
 		Map<Integer, BowlByBall> InningsDeliveries = innings1
 				.getDeliveries();
@@ -106,14 +110,33 @@ public class Main {
 		for (int i = 1; i <= InningsDeliveries.size(); i++) {
 			//for (int i = 1; i <3; i++) {
 
-			if(InningsDeliveries.get(i)!=null) {
-				bowl = InningsDeliveries.get(i);
-				System.out.println("boudaryyyyyyyy" + bowl.getBoundary());
-				ball = convertToBall(bowl);
-				System.out.println(ball.getBallNo() + "bowlnumber");
-				bats = ball.getBatsman();
-				baller = ball.getBowler();
-				System.out.println(playerNames);
+            if (InningsDeliveries.get(i) != null) {
+                bowl = InningsDeliveries.get(i);
+                System.out.println("boudaryyyyyyyy" + bowl.getBoundary());
+                ball = convertToBall(bowl);
+                int runs = ball.getRuns();
+
+                /*if (runs == 0) {
+                    if (Integer.getInteger(ball.getBallNo().split("\\.")[0]) < 6) {
+                        dotsInPP++;
+                    }
+                    numOfDots++;
+                } else if (runs == 4) {
+                    if (Integer.getInteger(ball.getBallNo().split("\\.")[0]) < 6) {
+                        foursInPP++;
+                    }
+                    numOfFours++;
+                } else if (runs == 6) {
+                    if (Integer.getInteger(ball.getBallNo().split("\\.")[0]) < 6) {
+                        sixesInPP++;
+                    }
+                    numOfSixes++;
+                }*/
+
+                System.out.println(ball.getBallNo() + "bowlnumber");
+                bats = ball.getBatsman();
+                baller = ball.getBowler();
+                System.out.println(playerNames);
 
 //                playerNames = checkForPlayerNew(session, playerNames, bats.getPlayerName());
 //                playerNames = checkForPlayerNew(session, playerNames, baller.getPlayerName());
