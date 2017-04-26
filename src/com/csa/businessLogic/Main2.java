@@ -72,7 +72,7 @@ public class Main2 {
         int i, j;
         int break1 = 0, break2 = 0;
         for (i = 1; !list.get(i).getBallNo().equals("0.1"); i++) {
-            if (list.get(i).getBallNo().equals("6.1")) {
+            if (Double.parseDouble(list.get(i).getBallNo()) <= 6.1) {
                 break1 = i;
             }
             inn1TotalRuns = inn1TotalRuns + list.get(i).getRuns();
@@ -103,20 +103,20 @@ public class Main2 {
         inn1.setSixesInPP(powerPlay(list.subList(0, break1))[4]);
 
         for (j = i; j < list.size(); j++) {
-            if (list.get(j).getBallNo().equals("6.1")) {
+            if (Double.parseDouble(list.get(j).getBallNo()) <= 6.1) {
                 break2 = j;
             }
             inn2TotalRuns = inn2TotalRuns + list.get(j).getRuns();
             if (list.get(j).getWicketType() != null) {
-                inn2TotalWickets = inn2TotalWickets++;
+                inn2TotalWickets++;
             }
-            if(list.get(i).getRuns() == 0) {
+            if(list.get(j).getRuns() == 0) {
                 inn2NumOfDots++;
             }
-            if(list.get(i).getRuns() == 4) {
+            if(list.get(j).getRuns() == 4) {
                 inn2NumOfFours++;
             }
-            if(list.get(i).getRuns() == 6) {
+            if(list.get(j).getRuns() == 6) {
                 inn2NumOfSixes++;
             }
         }
@@ -129,9 +129,9 @@ public class Main2 {
         inn2.setNumOfSixes(inn2NumOfSixes);
         inn2.setRunsPowerPlay(powerPlay(list.subList(i, break2))[0]);
         inn2.setWicketsPowerPlay(powerPlay(list.subList(i, break2))[1]);
-        inn2.setDotsInPP(powerPlay(list.subList(0, break2))[2]);
-        inn2.setFoursInPP(powerPlay(list.subList(0, break2))[3]);
-        inn2.setSixesInPP(powerPlay(list.subList(0, break2))[4]);
+        inn2.setDotsInPP(powerPlay(list.subList(i, break2))[2]);
+        inn2.setFoursInPP(powerPlay(list.subList(i, break2))[3]);
+        inn2.setSixesInPP(powerPlay(list.subList(i, break2))[4]);
 
             String outcome = list1.get(0).getOutcome();
             String[] splitStr = outcome.split("\\s+");
@@ -178,7 +178,7 @@ public class Main2 {
         for (int i = 0; i < list.size(); i++) {
             runs = runs + list.get(i).getRuns();
             if (list.get(i).getWicketType() != null) {
-                wickets = wickets++;
+                wickets++;
             }
             if(list.get(i).getRuns() == 0) {
                 dots++;

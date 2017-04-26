@@ -38,7 +38,7 @@ public class Main {
 
         //for (int j = 335982; j <= 981019; j++) {
         //for (int j = 335982; j < 336020; j++) {
-        for (int j = 336028; j < 336077; j++) {
+        for (int j = 336028; j < 729305; j++) {
             String filepath = "resources/ipl/" + j + ".yaml";
 
 			//Object object = new Object();
