@@ -28,6 +28,18 @@ public class Dataset {
     private int dotsInPP;
     private int foursInPP;
     private int sixesInPP;
+    private int numOfBowledDel;
+    private int numOfCaughtDel;
+    private int numOfRunOutDel;
+    private int numOfStumpedDel;
+    private int highIndvWickets;
+    private int highIndvRuns;
+    private int numOfThirties;
+    private int numOfFifties;
+    private int runsInMO;
+    private int runsInDO;
+    private int dotsInMO;
+    private int dotsInDo;
 
     public Dataset() {
 
@@ -136,6 +148,102 @@ public class Dataset {
 
     public void setSixesInPP(int sixesInPP) {
         this.sixesInPP = sixesInPP;
+    }
+
+    public int getNumOfBowledDel() {
+        return numOfBowledDel;
+    }
+
+    public void setNumOfBowledDel(int numOfBowledDel) {
+        this.numOfBowledDel = numOfBowledDel;
+    }
+
+    public int getNumOfCaughtDel() {
+        return numOfCaughtDel;
+    }
+
+    public void setNumOfCaughtDel(int numOfCaughtDel) {
+        this.numOfCaughtDel = numOfCaughtDel;
+    }
+
+    public int getNumOfRunOutDel() {
+        return numOfRunOutDel;
+    }
+
+    public void setNumOfRunOutDel(int numOfRunOutDel) {
+        this.numOfRunOutDel = numOfRunOutDel;
+    }
+
+    public int getNumOfStumpedDel() {
+        return numOfStumpedDel;
+    }
+
+    public void setNumOfStumpedDel(int numOfStumpedDel) {
+        this.numOfStumpedDel = numOfStumpedDel;
+    }
+
+    public int getHighIndvWickets() {
+        return highIndvWickets;
+    }
+
+    public void setHighIndvWickets(int highIndvWickets) {
+        this.highIndvWickets = highIndvWickets;
+    }
+
+    public int getHighIndvRuns() {
+        return highIndvRuns;
+    }
+
+    public void setHighIndvRuns(int highIndvRuns) {
+        this.highIndvRuns = highIndvRuns;
+    }
+
+    public int getNumOfThirties() {
+        return numOfThirties;
+    }
+
+    public void setNumOfThirties(int numOfThirties) {
+        this.numOfThirties = numOfThirties;
+    }
+
+    public int getNumOfFifties() {
+        return numOfFifties;
+    }
+
+    public void setNumOfFifties(int numOfFifties) {
+        this.numOfFifties = numOfFifties;
+    }
+
+    public int getRunsInMO() {
+        return runsInMO;
+    }
+
+    public void setRunsInMO(int runsInMO) {
+        this.runsInMO = runsInMO;
+    }
+
+    public int getRunsInDO() {
+        return runsInDO;
+    }
+
+    public void setRunsInDO(int runsInDO) {
+        this.runsInDO = runsInDO;
+    }
+
+    public int getDotsInMO() {
+        return dotsInMO;
+    }
+
+    public void setDotsInMO(int dotsInMO) {
+        this.dotsInMO = dotsInMO;
+    }
+
+    public int getDotsInDo() {
+        return dotsInDo;
+    }
+
+    public void setDotsInDo(int dotsInDo) {
+        this.dotsInDo = dotsInDo;
     }
 }
 

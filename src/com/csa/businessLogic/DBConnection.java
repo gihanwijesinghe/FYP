@@ -23,7 +23,7 @@ public class DBConnection {
         try {
             // create a mysql database connection
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/CricketSabermetricsFYP","root","Mathematics");
+            conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/fyp","root","root");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

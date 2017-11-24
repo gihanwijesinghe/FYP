@@ -1,5 +1,7 @@
 package com.csa.businessLogic;
 
+
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -23,6 +25,8 @@ import com.csa.visualization.InningByInningsResults;
 import com.esotericsoftware.yamlbeans.YamlException;
 import com.sun.jndi.url.corbaname.corbanameURLContextFactory;
 import org.hibernate.query.Query;
+
+/* Extracting the yaml file data and inserting the ball by ball data to a database using hibernate*/
 
 public class Main {
 

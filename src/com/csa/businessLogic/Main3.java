@@ -11,6 +11,7 @@ import java.sql.Statement;
 
 /**
  * Created by Gihan on 4/25/2017.
+ * Exracting data from the dataset table
  */
 public class Main3 {
 
@@ -40,7 +41,7 @@ public class Main3 {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Boolean includeHeaders = false;
+        Boolean includeHeaders = true;
 
         java.sql.ResultSet myResultSet = rs;
          //your resultset logic here

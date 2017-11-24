@@ -4,9 +4,9 @@
 	<session-factory>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/CricketSabermetricsFYP?createDatabaseIfNotExist=true</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/fyp</property>
 		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password">Mathematics</property>
+		<property name="hibernate.connection.password">root</property>
 		<property name="hibernate.show_sql">true</property>
 <!-- 		<property name="hibernate.current_session_context_class">thread</property> -->
 		<property name="hbm2ddl.auto">update</property>
@@ -30,6 +30,7 @@
 		<mapping class="com.csa.entity.Matchs"/>
 		<mapping class="com.csa.entity.Ball"/>
 		<mapping class="com.csa.entity.Dataset"/>
+		<mapping class="com.csa.entity.PlayerData"/>
 
         </session-factory>
     </hibernate-configuration>
