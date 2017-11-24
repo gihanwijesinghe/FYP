@@ -10,8 +10,11 @@
   <component name="FacetManager">
     <facet type="hibernate" name="Hibernate">
       <configuration>
-        <datasource-map />
+        <datasource-map>
+          <unit-entry name="hibernate.cfg.xml" />
+        </datasource-map>
         <naming-strategy-map />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
       </configuration>
     </facet>
   </component>
@@ -22,7 +25,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="jdk" jdkName="1.8 (1)" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -125,7 +128,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/yamlbeans-1.06.jar/yamlbeans-1.06.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../../../yamlbeans-1.06.jar/yamlbeans-1.06.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -134,7 +137,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/mysql-connector-java-5.1.5-bin.jar/mysql-connector-java-5.1.5-bin.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../../../mysql-connector-java-5.1.5-bin.jar/mysql-connector-java-5.1.5-bin.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -185,15 +188,9 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/../../opencsv-2.2.jar" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="file://$MODULE_DIR$/../../opencsv-2.2.jar" recursive="false" />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="yamlbeans-1.11 (2)" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.41-bin (2)" level="project" />
+    <orderEntry type="library" name="opencsv-3.9" level="project" />
+    <orderEntry type="library" name="opencsv-2.2" level="project" />
   </component>
 </module>
