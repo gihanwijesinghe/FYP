@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf71a435-e744-4e29-a6a0-873fdebf5fa1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yourfile.csv" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/csa/businessLogic/Main5.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/csa/businessLogic/DBConnection.java" afterPath="$PROJECT_DIR$/src/com/csa/businessLogic/DBConnection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/csa/businessLogic/Main.java" afterPath="$PROJECT_DIR$/src/com/csa/businessLogic/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/csa/businessLogic/Main2.java" afterPath="$PROJECT_DIR$/src/com/csa/businessLogic/Main2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/csa/businessLogic/Main3.java" afterPath="$PROJECT_DIR$/src/com/csa/businessLogic/Main3.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/csa/entity/Dataset.java" afterPath="$PROJECT_DIR$/src/com/csa/entity/Dataset.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/src/hibernate.cfg.xml" />
     </list>
     <ignored path="CSA.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -180,7 +171,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main4.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main4.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/csa/businessLogic/Main4.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
@@ -190,13 +181,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main5.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main5.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/csa/businessLogic/Main5.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="578">
               <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
               <folding>
-                <element signature="imports" expanded="false" />
+                <marker date="1511508198773" expanded="true" signature="1138:1162" ph="SELECT * FRO... PLAYERDATA" />
               </folding>
             </state>
           </provider>
@@ -1071,7 +1062,7 @@
       <workItem from="1503418412172" duration="520000" />
       <workItem from="1503465354800" duration="3107000" />
       <workItem from="1504335993263" duration="412000" />
-      <workItem from="1511513565634" duration="728000" />
+      <workItem from="1511513565634" duration="820000" />
     </task>
     <task id="LOCAL-00001" summary="Third commit">
       <created>1491218237681</created>
@@ -1150,11 +1141,25 @@
       <option name="project" value="LOCAL" />
       <updated>1511513755526</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added some extra codes and comments to improve the readability">
+      <created>1511514308837</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1511514308837</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added some extra codes and comments to improve the readability">
+      <created>1511514357482</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1511514357482</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187614000" />
+    <option name="totallyTimeSpent" value="187706000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1623,16 +1628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/csa/businessLogic/Main5.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/csa/entity/Dataset.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
@@ -1775,6 +1770,16 @@
         <state relative-caret-position="374">
           <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/csa/businessLogic/Main5.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+          <folding>
+            <marker date="1511508198773" expanded="true" signature="1138:1162" ph="SELECT * FRO... PLAYERDATA" />
+          </folding>
         </state>
       </provider>
     </entry>
